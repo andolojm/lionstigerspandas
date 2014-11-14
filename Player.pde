@@ -5,7 +5,7 @@ class Player{
   int xPos;
   int yPos;
   int speed;
-  final long SHOOT_DELAY = 3000;
+  final long SHOOT_DELAY = 200;
   long timeToShoot;
   
   Player(){
@@ -15,7 +15,7 @@ class Player{
     xPos = width/2;
     yPos = height/2;
     speed = 15;
-    timeToShoot = System.nanoTime();
+    timeToShoot = millis();
   }
   
   void display(){
@@ -39,11 +39,11 @@ class Player{
   }
   
   void shoot(int dartCounter){
-   int targetX = mouseX;
+    int targetX = mouseX;
     int targetY = mouseY;
-    if(System.nanoTime() >= timeToShoot){
+    if(millis() >= timeToShoot){
       darts[dartCounter] = new Dart(player.xPos, player.yPos, targetX, targetY); 
-      timeToShoot = System.nanoTime() + SHOOT_DELAY;
+      timeToShoot = millis() + SHOOT_DELAY;
     }
   }
 }

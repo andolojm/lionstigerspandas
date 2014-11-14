@@ -1,6 +1,5 @@
 class Dart{
-  int dWidth;
-  int dHeight;
+  int dSize;
   boolean isHit;
   int velocityDelay = 10;
   float speed = 5;
@@ -18,12 +17,11 @@ class Dart{
    velocity.sub(position);
    velocity.normalize();
    velocity.mult(speed);
-   dWidth = 5;
-   dHeight = 3;
+   dSize = 3;
   } 
   
   void display(){
-   rect(position.x,position.y,dWidth, dHeight); 
+   ellipse(position.x,position.y,dSize, dSize); 
   }
   void move(){
     position.add(velocity);
