@@ -2,6 +2,7 @@ class Scoreboard {
   
   private int score;
   private PFont font;
+  private int starttime;
   
   Scoreboard(){
     score = 0;
@@ -31,6 +32,7 @@ class Scoreboard {
   
   private String getTime(){
     int millis = millis();
+    millis -= starttime;
     int seconds = millis / 1000;
     int minutes = 0;
     while(seconds >= 60){
@@ -56,4 +58,13 @@ class Scoreboard {
       life -= 1;
     }
   }
+  
+  void reset(){
+    starttime = millis();
+  }
+  
+  void showMenu(){
+    
+  }
 }
+
