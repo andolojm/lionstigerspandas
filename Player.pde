@@ -9,13 +9,25 @@ class Player{
   long timeToShoot;
   
   Player(){
-    life = 5;
+    life = 55;
     pHeight = 30;
     pWidth = 10;
     xPos = width/2;
     yPos = height/2;
     speed = 15;
     timeToShoot = millis();
+  }
+  
+  void collisionDetection(ArrayList<Animal> animals){
+    for(Animal aAnimal: animals){
+      float distance = dist(xPos, yPos, aAnimal.xPos, aAnimal.yPos);
+      float playerRadius = pWidth/2;
+      float animalRadius = aAnimal.aHeight/2;
+      if(distance < playerRadius + animalRadius){
+        life -= aAnimal.damage;
+      }
+    }
+    
   }
   
   void display(){

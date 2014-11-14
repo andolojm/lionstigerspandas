@@ -2,6 +2,7 @@ Scoreboard board;
 int location; //1 = Main Menu, 2 = Game, 3 = Losing Screen, 4 = Instructions
 Player player;
 Dart[] darts;
+ArrayList<Animal> animals;
 int dartCounter; //dart index to shoot next
 final int DART_MAX = 100;
 
@@ -43,7 +44,7 @@ void playGameFrame(){
   background(255);
   board.showScore();
   board.showTime();
-  board.showLife(55);
+  board.showLife(player.life);
   
   player.display();
   for(Dart dart:darts){

@@ -3,6 +3,7 @@ class Dart{
   boolean isHit;
   int velocityDelay = 10;
   float speed = 5;
+  int damage = 1;
   
   PVector position;
   PVector target;
@@ -26,9 +27,17 @@ class Dart{
   void move(){
     position.add(velocity);
   }
-  boolean collision(){
+  boolean collisionDetection(ArrayList<Animal> animals){
     boolean hasCollided = false;
     
+    for(Animal aAnimal: animals){
+      float distance = dist(position.x, position.y, aAnimal.xPos, aAnimal.yPos);
+      float dartRadius = dSize/2;
+      float animalRadius = aAnimal.aHeight/2;
+      if(distance < dartRadius + animalRadius){
+        aAnimal.life -= damage;
+      }
+    }
     return hasCollided;
   }
   
