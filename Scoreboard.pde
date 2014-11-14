@@ -1,28 +1,70 @@
-Scoreboard board;
-int location; //1 = Main Menu, 2 = Game, 3 = Losing Screen, 4 = Instructions
-
-void setup() {
-  size(800,850);
-  board = new Scoreboard();
-  location = 1;
-}
-
-void draw() {
-  if(location == 1){
-        
-  } else if(location == 2){ //game
-    
-  } else if(location == 3){ //you lose
-    
-  } else if(location == 4){ //instructions
-    
+class Scoreboard {
+  
+  private int score;
+  private PFont font;
+  private int starttime;
+  
+  Scoreboard(){
+    score = 0;
+    font = loadFont("SakkalMajalla-48.vlw");
   }
   
-  fill(0,0,0);
-  rect(0,0,300,300);
+  void addScore(int addition){
+    score += addition;
+  }
   
-  background(255);
-  board.showScore();
-  board.showTime();
-  board.showLife(55);
+  void showScore(){
+    fill(0,0,0);
+    rect(0,0,800,50);
+    rect(10,100,48,30);
+    rect(100,60,30,48);
+    rect(100,792,30,48);
+    textFont(font,50);
+    fill(255,255,255);
+    text("Score: " + score,10,35);
+  }
+  
+  void showTime(){
+    textFont(font,50);
+    fill(255,255,255);
+    text(getTime(),220,35);
+  }
+  
+  private String getTime(){
+    int millis = millis();
+    millis -= starttime;
+    int seconds = millis / 1000;
+    int minutes = 0;
+    while(seconds >= 60){
+      seconds -= 60;
+      minutes += 1; 
+    }
+    String strSeconds = Integer.toString(seconds);
+    if(seconds < 10){
+      strSeconds = "0" + strSeconds; 
+    }
+    return minutes + ":" + strSeconds;
+  }
+  
+  void showLife(int life){
+    fill(255,255,255);
+    text("Health: ",350,35);
+    while(life > 0){
+      int green = life * 4;
+      int red = 200 - green;
+      fill(red,green,0);
+      textFont(font,50);
+      rect((life * 6) + 460,5,6,35);
+      life -= 1;
+    }
+  }
+  
+  void reset(){
+    starttime = millis();
+  }
+  
+  void showMenu(){
+    
+  }
 }
+

@@ -24,27 +24,21 @@ void draw() {
     board.showScore();
     board.showTime();
     board.showLife(55);
+    
+    player.display();
+    for(Dart dart:darts){
+      if(dart != null){
+        dart.move();
+        dart.display(); 
+      }
+    }
   } else if(location == 3){ //you lose
     
   } else if(location == 4){ //instructions
     
   }
 
-  fill(0,0,0);
-  rect(0,0,300,300);
   
-  background(255);
-  board.showScore();
-  board.showTime();
-  board.showLife(55);
-  
-  player.display();
-  for(Dart dart:darts){
-    if(dart != null){
-      dart.move();
-      dart.display(); 
-    }
-  }
 }
 
 void keyPressed(){
@@ -77,7 +71,7 @@ void keyPressed(){
          dartCounter = 0; 
         }
         break;
-      case ESCAPE:
+      case ESC:
         location = 3;
     }
   } else if(location == 3){ //you lose
