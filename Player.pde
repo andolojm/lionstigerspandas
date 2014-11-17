@@ -7,6 +7,7 @@ class Player{
   int speed;
   final long SHOOT_DELAY = 200;
   long timeToShoot;
+  int dartCounter; //dart index to shoot next
   
   Player(){
     life = 55;
@@ -14,8 +15,9 @@ class Player{
     pWidth = 10;
     xPos = width/2;
     yPos = height/2;
-    speed = 15;
+    speed = 2;
     timeToShoot = millis();
+    dartCounter = 0;
   }
   
   void collisionDetection(ArrayList<Animal> animals){
@@ -50,12 +52,16 @@ class Player{
     xPos -= speed;
   }
   
-  void shoot(int dartCounter){
+  void shoot(){
     int targetX = mouseX;
     int targetY = mouseY;
     if(millis() >= timeToShoot){
       darts[dartCounter] = new Dart(player.xPos, player.yPos, targetX, targetY); 
       timeToShoot = millis() + SHOOT_DELAY;
+      dartCounter++;
+      if(dartCounter > DART_MAX -1){
+        dartCounter = 0; 
+      }
     }
   }
 }

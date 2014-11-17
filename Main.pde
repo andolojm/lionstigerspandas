@@ -1,9 +1,9 @@
 Scoreboard board;
 int location; //1 = Main Menu, 2 = Game, 3 = Losing Screen, 4 = Instructions
 Player player;
-Dart[] darts;
+Dart[] darts; 
+boolean[] playerControls;
 ArrayList<Animal> animals;
-int dartCounter; //dart index to shoot next
 final int DART_MAX = 100;
 
 void setup() {
@@ -12,7 +12,12 @@ void setup() {
   location = 1;
   player = new Player();
   darts = new Dart[DART_MAX];
-  dartCounter = 0;
+
+  
+  playerControls = new boolean[5];
+  for(int i = 0; i < playerControls.length; i++){
+    playerControls[i] = false; 
+  }
 }
 
 void draw() {
@@ -20,6 +25,7 @@ void draw() {
     playMenuFrame();
   } else if(location == 2){ //game
     playGameFrame();
+    handlePlayerControls();
   } else if(location == 3){ //you lose
     playLosingFrame();
   } else if(location == 4){ //instructions
@@ -75,30 +81,50 @@ void handleMenuKeyEvents(){
 void handleGameKeyEvents(){
   switch (keyCode){
     case 68:
-    case RIGHT:      
-      player.right();
+    case RIGHT:   
+      playerControls[0] = true;    
       break;
     case 65:
     case LEFT:       
-      player.left();
+      playerControls[1] = true; 
       break;
     case 87:
     case UP:         
-      player.up();
+      playerControls[2] = true; 
       break;
     case 83:
     case DOWN:       
-      player.down();
+      playerControls[3] = true; 
       break;
     case 32:
-      player.shoot(dartCounter);
-      dartCounter++;
-      if(dartCounter > DART_MAX -1){
-       dartCounter = 0; 
-      }
+      playerControls[4] = true; 
       break;
     case ESC:
       location = 3;
+  }
+}
+void keyReleased()
+{
+  switch (keyCode){
+    case 68:
+    case RIGHT:   
+      playerControls[0] = false;    
+      break;
+    case 65:
+    case LEFT:       
+      playerControls[1] = false; 
+      break;
+    case 87:
+    case UP:         
+      playerControls[2] = false; 
+      break;
+    case 83:
+    case DOWN:       
+      playerControls[3] = false; 
+      break;
+    case 32:
+      playerControls[4] = false; 
+      break;
   }
 }
 
@@ -108,4 +134,23 @@ void handleLosingKeyEvents(){
 
 void handleInstructionsKeyEvents(){
   location = 1;
+}
+
+void handlePlayerControls(){
+  if(playerControls[0]){
+    player.right();
+  }
+  if(playerControls[1]){
+    player.left();
+  }
+  if(playerControls[2]){
+    player.up();
+  }
+  if(playerControls[3]){
+    player.down();
+  }
+  if(playerControls[4]){
+    player.shoot();
+    
+  }
 }
