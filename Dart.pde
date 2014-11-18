@@ -36,6 +36,8 @@ class Dart{
       float animalRadius = aAnimal.aHeight/2;
       if(distance < dartRadius + animalRadius){
         aAnimal.life -= damage;
+        position.set(0,0);
+        velocity.set(0,0);
       }
     }
     return hasCollided;

@@ -12,6 +12,8 @@ void setup() {
   location = 1;
   player = new Player();
   darts = new Dart[DART_MAX];
+  animals = new ArrayList<Animal>();
+  animals.add(new Lion());
 
   
   playerControls = new boolean[5];
@@ -51,14 +53,19 @@ void playGameFrame(){
   board.showScore();
   board.showTime();
   board.showLife(player.life);
-  
   player.display();
   for(Dart dart:darts){
     if(dart != null){
       dart.move();
       dart.display(); 
+      dart.collisionDetection(animals);
     }
   } 
+  for(Animal animal:animals){
+    animal.findPlayer(player.xPos, player.yPos);
+    animal.display();
+  }
+  player.collisionDetection(animals);
 }
 
 void playMenuFrame(){

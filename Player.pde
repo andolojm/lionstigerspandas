@@ -33,6 +33,7 @@ class Player{
   }
   
   void display(){
+    rectMode(CENTER);
     rect(xPos, yPos, pWidth, pHeight);
   }
   

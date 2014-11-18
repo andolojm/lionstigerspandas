@@ -22,17 +22,28 @@ public abstract class Animal {
    }
   }
   
-  void findplayer(int playerX, int playerY){
+  void findPlayer(int playerX, int playerY){
     //move towards player position
     if(playerX > xPos){
-      xPos++; 
+      xPos += speed; 
     }else{
-      xPos--; 
+      xPos -= speed; 
     }
     if(playerY > yPos){
-      yPos++; 
+      yPos += speed; 
     }else{
-      yPos--; 
+      yPos -= speed; 
+    }
+  }
+  
+  void display(){
+    if(life > 0){
+      rectMode(CENTER);
+      rect(xPos, yPos, aWidth, aHeight);
+    }else{
+      xPos = -10;
+      yPos = -10;
+      speed = 0;  
     }
   }
   

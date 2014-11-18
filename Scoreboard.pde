@@ -15,10 +15,8 @@ class Scoreboard {
   
   void showScore(){
     fill(0,0,0);
+    rectMode(CORNER);
     rect(0,0,800,50);
-    rect(10,100,48,30);
-    rect(100,60,30,48);
-    rect(100,792,30,48);
     textFont(font,50);
     fill(255,255,255);
     text("Score: " + score,10,35);
@@ -54,6 +52,7 @@ class Scoreboard {
       int red = 200 - green;
       fill(red,green,0);
       textFont(font,50);
+      rectMode(CORNER);
       rect((life * 6) + 460,5,6,35);
       life -= 1;
     }
