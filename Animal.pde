@@ -1,5 +1,4 @@
 import ddf.minim.*;
-import java.lang.*;
 public abstract class Animal {
   Minim minim;
   int xPos;

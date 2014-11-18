@@ -1,3 +1,5 @@
+import ddf.minim.*;
+
 Scoreboard board;
 int location; //1 = Main Menu, 2 = Game, 3 = Losing Screen, 4 = Instructions
 Player player;
@@ -6,6 +8,11 @@ boolean[] playerControls;
 ArrayList<Animal> animals;
 final int DART_MAX = 100;
 
+//sound
+Minim minim;
+AudioPlayer sound_theme;
+AudioPlayer sound_gun;
+
 void setup() {
   size(800,850);
   board = new Scoreboard();
@@ -13,6 +20,12 @@ void setup() {
   player = new Player();
   darts = new Dart[DART_MAX];
   animals = new ArrayList<Animal>();
+  
+  //load in our sounds
+  minim = new Minim(this);
+  sound_theme= minim.loadFile("sound/Undaunted.mp3", 2048);
+  sound_gun = minim.loadFile("sound/Gun_Fire.mp3", 2048);
+  
   animals.add(new Lion());
 
   
@@ -66,6 +79,11 @@ void playGameFrame(){
     animal.display();
   }
   player.collisionDetection(animals);
+  
+  if(!sound_theme.isPlaying()){
+      sound_theme.rewind();
+      sound_theme.play();
+  }
 }
 
 void playMenuFrame(){
@@ -157,7 +175,6 @@ void handlePlayerControls(){
     player.down();
   }
   if(playerControls[4]){
-    player.shoot();
-    
+    player.shoot(sound_gun);
   }
 }

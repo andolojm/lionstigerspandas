@@ -10,7 +10,6 @@ class Dart{
   PVector dart;
   PVector velocity;
   
-  
   Dart(int xPlayer, int yPlayer, int targetX, int targetY){
    position = new PVector(xPlayer, yPlayer);
    target = new PVector(targetX, targetY);

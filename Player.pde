@@ -1,3 +1,4 @@
+import ddf.minim.*;
 class Player{
   int life;
   int pHeight;
@@ -53,13 +54,19 @@ class Player{
     xPos -= speed;
   }
   
-  void shoot(){
+  void shoot(AudioPlayer sound_gun){
+    
     int targetX = mouseX;
     int targetY = mouseY;
+    
     if(millis() >= timeToShoot){
+      sound_gun.rewind();
+      sound_gun.play();
+      
       darts[dartCounter] = new Dart(player.xPos, player.yPos, targetX, targetY); 
       timeToShoot = millis() + SHOOT_DELAY;
       dartCounter++;
+      
       if(dartCounter > DART_MAX -1){
         dartCounter = 0; 
       }
