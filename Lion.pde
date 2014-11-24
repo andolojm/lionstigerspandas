@@ -2,7 +2,9 @@ import ddf.minim.*;
 
 public class Lion extends Animal {
   Lion(AudioPlayer a_sound_animal){
-    a = new Animation('l');
+    a = new Animation();
+
+    a.setAnimationType('l');
 
     xPos = (int)random(width);
     yPos = height;

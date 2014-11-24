@@ -2,15 +2,15 @@ public class Animation
 {
   PImage spritesheet = loadImage("gfx/ltp_ss.png");
   int DIM = 8;
+
   int W = spritesheet.width/DIM;
   int H = spritesheet.height/DIM;
   PImage[] lsprites = new PImage[DIM*DIM];
   char aType;
   int toggle = 0;
 
-  Animation(char animalType)
+  Animation()
   {
-    aType=animalType;
     imageMode(CENTER);
     createAnimation();
   }
@@ -23,7 +23,10 @@ public class Animation
       lsprites[i] = spritesheet.get(x, y, W, H);
     }
   }
-
+  void setAnimationType(char a)
+  {
+    aType=a;
+  }
   PImage drawAnimation(int aWidth, int aHeight) 
   {
     //LSPRITES 9-18 are the player (4)
@@ -77,7 +80,67 @@ public class Animation
                 temp = lsprites[1];
                 toggle=0;
               }
-           break;  
+              break;
+        case 'p':
+               lsprites[16].resize(aHeight,aWidth);
+               temp= lsprites[16];
+              break;
+       case'a':
+             if(toggle==0)
+              {
+               lsprites[9].resize(aHeight,aWidth);
+               temp= lsprites[9];
+               toggle=1;
+              }
+              else
+              {
+                lsprites[10].resize(aHeight, aWidth);
+                temp = lsprites[10];
+                toggle=0;
+              }
+              break;
+       case'd':
+             if(toggle==0)
+              {
+               lsprites[11].resize(aHeight,aWidth);
+               temp= lsprites[11];
+               toggle=1;
+              }
+              else
+              {
+                lsprites[12].resize(aHeight, aWidth);
+                temp = lsprites[12];
+                toggle=0;
+              }
+              break;
+       case's':
+             if(toggle==0)
+              {
+               lsprites[17].resize(aHeight,aWidth);
+               temp= lsprites[17];
+               toggle=1;
+              }
+              else
+              {
+                lsprites[18].resize(aHeight, aWidth);
+                temp = lsprites[18];
+                toggle=0;
+              }
+              break;
+       case'w':
+             if(toggle==0)
+              {
+               lsprites[14].resize(aHeight,aWidth);
+               temp= lsprites[14];
+               toggle=1;
+              }
+              else
+              {
+                lsprites[15].resize(aHeight, aWidth);
+                temp = lsprites[15];
+                toggle=0;
+              }
+              break;
 
     }
     
