@@ -1,7 +1,9 @@
+import ddf.minim.*;
 
 public class Lion extends Animal {
-  Lion(){
+  Lion(AudioPlayer a_sound_animal){
     a = new Animation('l');
+
     xPos = (int)random(width);
     yPos = height;
     aHeight = 30;
@@ -9,5 +11,12 @@ public class Lion extends Animal {
     life = 10;
     damage = 1;
     speed = 1;
+    
+    timeToAttack = millis();
+    
+    //sound
+    
+    this.sound_animal = a_sound_animal;
+    
   }
 }

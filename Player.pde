@@ -27,7 +27,7 @@ class Player{
       float playerRadius = pWidth/2;
       float animalRadius = aAnimal.aHeight/2;
       if(distance < playerRadius + animalRadius){
-        life -= aAnimal.damage;
+        life -= aAnimal.attack();
       }
     }
     
