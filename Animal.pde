@@ -1,6 +1,5 @@
 import ddf.minim.*;
 public abstract class Animal {
-  Minim minim;
   int xPos;
   int yPos;
   int aHeight;
@@ -8,17 +7,25 @@ public abstract class Animal {
   int life;
   int damage;
   int speed;
+  long timeToAttack;
+  final long ATTACK_DELAY = 500;
   
-  AudioPlayer animalSound;
+  AudioPlayer sound_animal;
   
   
   
   void roar(){
-   //random roar function 
-   if((random(50) % 2) == 0){
-     animalSound.rewind();
-     animalSound.play();
-   }
+    sound_animal.rewind();
+    sound_animal.play(500);
+  }
+  
+  int attack(){
+    if(millis() >= timeToAttack){
+      this.roar();
+      timeToAttack = millis() + ATTACK_DELAY;
+      return damage;
+    }
+    return 0;
   }
   
   void findPlayer(int playerX, int playerY){
