@@ -7,7 +7,7 @@ Dart[] darts;
 boolean[] playerControls;
 ArrayList<Animal> animals;
 final int DART_MAX = 100;
-
+ 
 //sound
 Minim minim;
 AudioPlayer sound_theme;
@@ -20,7 +20,6 @@ void setup() {
   player = new Player();
   darts = new Dart[DART_MAX];
   animals = new ArrayList<Animal>();
-  
   //load in our sounds
   minim = new Minim(this);
   sound_theme= minim.loadFile("sound/Undaunted.mp3", 2048);
@@ -62,7 +61,7 @@ void keyPressed(){
 
 
 void playGameFrame(){
-  background(255);
+  background(190);
   board.showScore();
   board.showTime();
   board.showLife(player.life);

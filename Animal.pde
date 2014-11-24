@@ -8,6 +8,7 @@ public abstract class Animal {
   int life;
   int damage;
   int speed;
+  Animation a;
   
   AudioPlayer animalSound;
   
@@ -36,9 +37,12 @@ public abstract class Animal {
   }
   
   void display(){
+    
     if(life > 0){
-      rectMode(CENTER);
-      rect(xPos, yPos, aWidth, aHeight);
+      
+      
+//      rectMode(CENTER);
+//      rect(xPos, yPos, aWidth, aHeight);
     }else{
       xPos = -10;
       yPos = -10;

@@ -1,5 +1,7 @@
+
 public class Lion extends Animal {
   Lion(){
+    a = new Animation('l');
     xPos = (int)random(width);
     yPos = height;
     aHeight = 30;
