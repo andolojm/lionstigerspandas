@@ -1,5 +1,3 @@
-import ddf.minim.*;
-
 public class Lion extends Animal {
   Lion(AudioPlayer a_sound_animal){
     a = new Animation();
