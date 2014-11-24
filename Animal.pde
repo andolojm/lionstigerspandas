@@ -12,7 +12,10 @@ public abstract class Animal {
   long timeToAttack;
   final long ATTACK_DELAY = 500;
 
-  
+  long timeToAnimate;
+  final long ANIMATE_DELAY = 200;
+  PImage temp = new PImage();
+
   AudioPlayer sound_animal;
   
   
@@ -46,9 +49,14 @@ public abstract class Animal {
   }
   
   void display(){
-    
     if(life > 0){
-      
+
+      if(millis() >= timeToAnimate)
+        {
+          temp=a.drawAnimation(aWidth,aHeight);
+          timeToAnimate = millis() + ANIMATE_DELAY;
+        }  
+          image(temp,xPos,yPos);
       
 //      rectMode(CENTER);
 //      rect(xPos, yPos, aWidth, aHeight);
