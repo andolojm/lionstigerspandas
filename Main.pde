@@ -7,7 +7,7 @@ Dart[] darts;
 boolean[] playerControls;
 ArrayList<Animal> animals;
 final int DART_MAX = 100;
-
+PImage mainImg, lvlImg,diedImg;
 //sound
 Minim minim;
 AudioPlayer sound_theme;
@@ -15,8 +15,13 @@ AudioPlayer sound_gun;
 AudioPlayer sound_animal;
 
 void setup() {
-  
+  imageMode(CENTER);
   size(800,850);
+  background(255);
+  mainImg = loadImage("gfx/ltp_title.png");
+  diedImg = loadImage("gfx/YouDied.png");
+  lvlImg = loadImage("gfx/level.png");
+  
   board = new Scoreboard();
   location = 1;
   player = new Player();
@@ -41,6 +46,7 @@ void setup() {
 }
 
 void draw() {
+ 
   if(location == 1){ //main menu
     playMenuFrame();
   } else if(location == 2){ //game
@@ -51,6 +57,7 @@ void draw() {
   } else if(location == 4){ //instructions
     playInstructionsFrame();
   }
+  
 }
 
 void keyPressed(){
@@ -67,7 +74,10 @@ void keyPressed(){
 
 
 void playGameFrame(){
-  background(190);
+  
+  image(lvlImg,height/2,width/2);
+
+
   board.showScore();
   board.showTime();
   board.showLife(player.life);
@@ -92,11 +102,13 @@ void playGameFrame(){
 }
 
 void playMenuFrame(){
+
+  image(mainImg,height/2,width/2);
   board.showMenu(); 
 }
 
 void playLosingFrame(){
-  
+  image(diedImg,height/2,width/2);
 }
 
 void playInstructionsFrame(){
