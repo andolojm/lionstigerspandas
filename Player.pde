@@ -18,8 +18,8 @@ class Player {
 
   Player() {
     life = 55;
-    pHeight = 32;
-    pWidth = 32;
+    pHeight = 50;
+    pWidth = 50;
     xPos = width/2;
     yPos = height/2;
     speed = 2;

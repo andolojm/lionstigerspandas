@@ -8,9 +8,9 @@ public class Panda extends Animal {
     yPos = (int)random(height);
     aHeight = 30;
     aWidth = 48;
-    life = 10;
+    life = 20;
     damage = 1;
-    speed = 1;
+    speed = .2;
     
     timeToAttack = millis();
     

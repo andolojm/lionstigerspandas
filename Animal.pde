@@ -1,12 +1,12 @@
 import ddf.minim.*;
 public abstract class Animal {
-  int xPos;
-  int yPos;
+  float xPos;
+  float yPos;
   int aHeight;
   int aWidth;
   int life;
   int damage;
-  int speed;
+  float speed;
   Animation a;
 
   long timeToAttack;

@@ -6,11 +6,11 @@ public class Lion extends Animal {
 
     xPos = (int)random(width);
     yPos = height;
-    aHeight = 30;
-    aWidth = 48;
-    life = 10;
+    aHeight = 45;
+    aWidth = 55;
+    life = 8;
     damage = 1;
-    speed = 1;
+    speed = 1.5;
     
     timeToAttack = millis();
     

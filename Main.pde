@@ -75,7 +75,7 @@ void keyPressed(){
 
 void playGameFrame(){
   
-  image(lvlImg,height/2,width/2);
+  image(lvlImg,height/2,width/2 + 50);
 
 
   board.showScore();
