@@ -6,7 +6,7 @@ Player player;
 Dart[] darts; 
 boolean[] playerControls;
 ArrayList<Animal> animals;
-final int DART_MAX = 100;
+final int DART_MAX = 25;
 PImage mainImg, lvlImg,diedImg;
 //sound
 Minim minim;
@@ -27,6 +27,7 @@ void setup() {
   player = new Player();
   darts = new Dart[DART_MAX];
   animals = new ArrayList<Animal>();
+  
   //load in our sounds
   minim = new Minim(this);
   sound_theme= minim.loadFile("sound/Undaunted.mp3", 2048);
@@ -75,12 +76,12 @@ void keyPressed(){
 
 void playGameFrame(){
   
-  image(lvlImg,height/2,width/2 + 50);
+  image(lvlImg,width/2,height/2 + 25);
 
 
   board.showScore();
   board.showTime();
-  board.showLife(player.life);
+  board.showLife(player.getLife());
   player.display();
   for(Dart dart:darts){
     if(dart != null){
@@ -99,6 +100,9 @@ void playGameFrame(){
       sound_theme.rewind();
       sound_theme.play();
   }
+  if(player.life < 0){
+   location = 3; 
+  }
 }
 
 void playMenuFrame(){
@@ -109,6 +113,9 @@ void playMenuFrame(){
 
 void playLosingFrame(){
   image(diedImg,height/2,width/2);
+  for(Animal animal:animals){
+    animal.reset();
+  }
 }
 
 void playInstructionsFrame(){
@@ -117,6 +124,7 @@ void playInstructionsFrame(){
 
 void handleMenuKeyEvents(){
   board.reset();
+  player.reset();
   location = 2;
 }
 

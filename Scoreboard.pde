@@ -60,6 +60,7 @@ class Scoreboard {
   
   void reset(){
     starttime = millis();
+    score = 0;
   }
   
   void showMenu(){

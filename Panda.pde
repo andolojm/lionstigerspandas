@@ -8,6 +8,7 @@ public class Panda extends Animal {
     yPos = (int)random(height);
     aHeight = 30;
     aWidth = 48;
+    scoreValue = 20;
     life = 20;
     damage = 1;
     speed = .2;
@@ -15,7 +16,6 @@ public class Panda extends Animal {
     timeToAttack = millis();
     
     //sound
-    
     this.sound_animal = a_sound_animal;
     
   }

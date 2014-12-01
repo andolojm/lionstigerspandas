@@ -52,43 +52,54 @@ class Player {
     }
   }
 
-    void up() {
-      yPos -= speed;
-      a.setAnimationType('w');
-    }
+  void up() {
+    yPos -= speed;
+    a.setAnimationType('w');
+  }
 
-    void down() {
-      yPos += speed;
-      a.setAnimationType('s');
-    }
+  void down() {
+    yPos += speed;
+    a.setAnimationType('s');
+  }
 
-    void right() {
-      xPos += speed;
-      a.setAnimationType('a');
-    }
+  void right() {
+    xPos += speed;
+    a.setAnimationType('a');
+  }
 
-    void left() {
-      xPos -= speed;
-      a.setAnimationType('d');
-    }
+  void left() {
+    xPos -= speed;
+    a.setAnimationType('d');
+  }
 
-    void shoot(AudioPlayer sound_gun) {
+  void shoot(AudioPlayer sound_gun) {
 
-      int targetX = mouseX;
-      int targetY = mouseY;
+    int targetX = mouseX;
+    int targetY = mouseY;
 
-      if (millis() >= timeToShoot) {
-        sound_gun.rewind();
-        sound_gun.play();
+    if (millis() >= timeToShoot) {
+      sound_gun.rewind();
+      sound_gun.play();
 
-        darts[dartCounter] = new Dart(player.xPos, player.yPos, targetX, targetY); 
-        timeToShoot = millis() + SHOOT_DELAY;
-        dartCounter++;
+      darts[dartCounter] = new Dart(player.xPos, player.yPos, targetX, targetY); 
+      timeToShoot = millis() + SHOOT_DELAY;
+      dartCounter++;
 
-        if (dartCounter > DART_MAX -1) {
-          dartCounter = 0;
-        }
+      if (dartCounter > DART_MAX -1) {
+        dartCounter = 0;
       }
     }
   }
+  
+  void reset(){
+    life = 55;
+    xPos = width/2;
+    yPos = height/2;
+    speed = 2;
+  }
+  
+  int getLife(){
+    return life;
+  }
+}
 

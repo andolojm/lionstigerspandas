@@ -6,6 +6,7 @@ public abstract class Animal {
   int aWidth;
   int life;
   int damage;
+  int scoreValue;
   float speed;
   Animation a;
 
@@ -61,10 +62,19 @@ public abstract class Animal {
 //      rectMode(CENTER);
 //      rect(xPos, yPos, aWidth, aHeight);
     }else{
-      xPos = -10;
-      yPos = -10;
+      if(xPos > -1000){
+        board.addScore(scoreValue);
+      }
+      xPos = -1000;
+      yPos = -1000;
       speed = 0;  
     }
+  }
+  
+  void reset(){
+    xPos = -1000;
+    yPos = -1000;
+    speed = 0;
   }
   
 }
