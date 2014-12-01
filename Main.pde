@@ -7,7 +7,7 @@ Dart[] darts;
 boolean[] playerControls;
 ArrayList<Animal> animals;
 final int DART_MAX = 100;
- 
+
 //sound
 Minim minim;
 AudioPlayer sound_theme;
@@ -15,6 +15,7 @@ AudioPlayer sound_gun;
 AudioPlayer sound_animal;
 
 void setup() {
+  
   size(800,850);
   board = new Scoreboard();
   location = 1;
