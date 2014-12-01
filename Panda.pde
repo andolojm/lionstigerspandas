@@ -1,11 +1,11 @@
-public class Lion extends Animal {
-  Lion(AudioPlayer a_sound_animal){
+public class Panda extends Animal {
+  Panda(AudioPlayer a_sound_animal){
     a = new Animation();
 
-    a.setAnimationType('l');
+    a.setAnimationType('b');
 
-    xPos = (int)random(width);
-    yPos = height;
+    xPos = 0;
+    yPos = (int)random(height);
     aHeight = 30;
     aWidth = 48;
     life = 10;

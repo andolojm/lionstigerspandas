@@ -27,8 +27,11 @@ void setup() {
   sound_theme= minim.loadFile("sound/Undaunted.mp3", 2048);
   sound_gun = minim.loadFile("sound/Gun_Fire.mp3", 2048);
   sound_animal = minim.loadFile("sound/lion_roar.mp3", 2048);
-  
   animals.add(new Lion(sound_animal));
+  sound_animal = minim.loadFile("sound/tiger.mp3", 2048);
+  animals.add(new Tiger(sound_animal));
+  sound_animal = minim.loadFile("sound/panda.mp3", 2048);
+  animals.add(new Panda(sound_animal));
 
   
   playerControls = new boolean[5];
