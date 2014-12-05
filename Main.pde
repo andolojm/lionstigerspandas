@@ -80,6 +80,7 @@ void keyPressed(){
 
 
 void playGameFrame(){
+  background(255);
   
   image(lvlImg,width/2,height/2 + 25);
   
@@ -112,11 +113,15 @@ void playGameFrame(){
 }
 
 void playMenuFrame(){
+  background(255);
+
   image(mainImg,width/2,height/2-75);
   board.showMenu(); 
 }
 
 void playLosingFrame(){
+  background(255);
+
   image(diedImg,height/2,width/2);
   for(Animal animal:animals){
     animal.reset();
@@ -208,4 +213,10 @@ void handlePlayerControls(){
     player.shoot(sound_gun);
   }
 }
-
+void mouseClicked()
+{
+  if(location ==3)
+  {
+    location =1;
+  }
+}
