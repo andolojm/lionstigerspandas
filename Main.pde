@@ -110,12 +110,13 @@ void playGameFrame(){
 }
 
 void playMenuFrame(){
-
+  background(255);
   image(mainImg,height/2,width/2);
   board.showMenu(); 
 }
 
 void playLosingFrame(){
+  background(255);
   image(diedImg,height/2,width/2);
   for(Animal animal:animals){
     animal.reset();
@@ -129,6 +130,7 @@ void playInstructionsFrame(){
 void handleMenuKeyEvents(){
   board.reset();
   player.reset();
+  spawner.reset();
   location = 2;
 }
 

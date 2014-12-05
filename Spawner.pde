@@ -47,4 +47,9 @@ class Spawner{
                break;
      }
   }
+  void reset(){
+    spawn_delay = 5;
+    reduce_delay = 10;
+    last_spawn = 0;
+  }
 }
