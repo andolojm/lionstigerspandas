@@ -66,5 +66,12 @@ class Scoreboard {
   void showMenu(){
     
   }
+  
+  int getTimeAsMillis(){
+    int millis = millis();
+    millis -= starttime;
+    
+    return millis / 1000;
+  }
 }
 

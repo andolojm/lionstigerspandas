@@ -12,7 +12,11 @@ PImage mainImg, lvlImg,diedImg;
 Minim minim;
 AudioPlayer sound_theme;
 AudioPlayer sound_gun;
-AudioPlayer sound_animal;
+AudioPlayer sound_lion;
+AudioPlayer sound_tiger;
+AudioPlayer sound_panda;
+
+Spawner spawner;
 
 void setup() {
   imageMode(CENTER);
@@ -32,13 +36,12 @@ void setup() {
   minim = new Minim(this);
   sound_theme= minim.loadFile("sound/Undaunted.mp3", 2048);
   sound_gun = minim.loadFile("sound/Gun_Fire.mp3", 2048);
-  sound_animal = minim.loadFile("sound/lion_roar.mp3", 2048);
-  animals.add(new Lion(sound_animal));
-  sound_animal = minim.loadFile("sound/tiger.mp3", 2048);
-  animals.add(new Tiger(sound_animal));
-  sound_animal = minim.loadFile("sound/panda.mp3", 2048);
-  animals.add(new Panda(sound_animal));
-
+  
+  sound_lion = minim.loadFile("sound/lion_roar.mp3", 2048);
+  sound_tiger = minim.loadFile("sound/tiger.mp3", 2048);
+  sound_panda = minim.loadFile("sound/panda.mp3", 2048);
+  
+  spawner = new Spawner(sound_lion, sound_tiger, sound_panda);
   
   playerControls = new boolean[5];
   for(int i = 0; i < playerControls.length; i++){
@@ -77,7 +80,8 @@ void keyPressed(){
 void playGameFrame(){
   
   image(lvlImg,width/2,height/2 + 25);
-
+  
+  spawner.spawn(board.getTimeAsMillis());
 
   board.showScore();
   board.showTime();
