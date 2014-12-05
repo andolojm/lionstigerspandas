@@ -25,10 +25,12 @@ void setup() {
   mainImg = loadImage("gfx/ltp_title.png");
   diedImg = loadImage("gfx/YouDied.png");
   lvlImg = loadImage("gfx/level.png");
+
+  player = new Player();
   
   board = new Scoreboard();
   location = 1;
-  player = new Player();
+
   darts = new Dart[DART_MAX];
   animals = new ArrayList<Animal>();
   
@@ -110,8 +112,7 @@ void playGameFrame(){
 }
 
 void playMenuFrame(){
-
-  image(mainImg,height/2,width/2);
+  image(mainImg,width/2,height/2-75);
   board.showMenu(); 
 }
 
@@ -207,3 +208,4 @@ void handlePlayerControls(){
     player.shoot(sound_gun);
   }
 }
+
