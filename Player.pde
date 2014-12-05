@@ -27,7 +27,7 @@ class Player {
     dartCounter = 0;
     a.setAnimationType('p');
   }
-
+//To know when to call AllState
   void collisionDetection(ArrayList<Animal> animals) {
     for (Animal aAnimal : animals) {
       float distance = dist(xPos, yPos, aAnimal.xPos, aAnimal.yPos);
@@ -53,23 +53,31 @@ class Player {
   }
 
   void up() {
-    yPos -= speed;
-    a.setAnimationType('w');
+    if(yPos > 25){
+      yPos -= speed;
+      a.setAnimationType('w');
+    }
   }
 
   void down() {
-    yPos += speed;
-    a.setAnimationType('s');
+    if(yPos < height){
+      yPos += speed;
+      a.setAnimationType('s');
+    }
   }
 
   void right() {
-    xPos += speed;
-    a.setAnimationType('a');
+    if(xPos < width){
+      xPos += speed;
+      a.setAnimationType('a');
+    }
   }
 
   void left() {
-    xPos -= speed;
-    a.setAnimationType('d');
+    if(xPos > 0){
+      xPos -= speed;
+      a.setAnimationType('d');     
+    }
   }
 
   void shoot(AudioPlayer sound_gun) {
